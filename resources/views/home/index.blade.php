@@ -5,26 +5,27 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                @foreach($posts as $post)
+                <div class="col-6 py-3">
                     <x-card>
                         <div class="row">
                             <div class="col-6">
                                 <h2 class="h4" align="left" style="margin-left:20px; margin-top:10px;">
-                                    Новость
+                                    {{ $post->title }}
                                 </h2>
                             </div>
                             <div class="col-6">
                                 <div align="right" style="margin-right:20px; margin-top:10px;">
-                                    {{ now('Y') }}
+                                    {{ $post->time }}
                                 </div>
-                            </div>
-                        </div>
-                        
+                         </div>                      
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, sint!
+                            {{ $post->content }}
                         </p>
+                        
                     </x-card>
                 </div>
+                @endforeach
             </div>
         </div>
     </section>

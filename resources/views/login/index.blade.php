@@ -10,10 +10,10 @@
         <x-card-body>
             <x-form action="{{ route('login.store'); }}" method="POST">
                 <x-form-item>
-                    <x-input placeholder="Введите полис" />
+                    <x-input name='document' placeholder="Введите полис" />
                 </x-form-item>
                 <x-form-item>
-                    <x-input type="password" placeholder="Введите пароль" />
+                    <x-input type="password" name="password" placeholder="Введите пароль" />
                 </x-form-item>
                 <x-form-item>
                     <a href={{ route('register') }}>Еще не зарегистрированы?</a>
