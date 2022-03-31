@@ -1,3 +1,5 @@
-<input class="form-control" {{$attributes->merge([
+<input {{ $attributes->class([
+    "form-control",
+])->merge([
     'type' => 'text',
 ]) }}>

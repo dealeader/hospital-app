@@ -5,17 +5,19 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                @foreach($posts as $post)
+                <div class="col-6 py-3">
                     <x-card>
-                        <h2 class="h4">Новость</h2>
+                        <h2 class="h4">{{ $post->title }}</h2>
                         <div>
-                            {{ now('Y') }}
+                            {{ $post->time }}
                         </div>
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, sint!
+                            {{ $post->content }}
                         </p>
                     </x-card>
                 </div>
+                @endforeach
             </div>
         </div>
     </section>

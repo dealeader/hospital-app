@@ -13,7 +13,16 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        $post = (object) [
+            "id" => 1,
+            "time" => 1,
+            "title" => "Lorem, ipsum dolor.",
+            "content" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, accusantium?",
+
+        ];
+
+        $posts = array_fill(0, 10, $post);
+        return view('home.index', compact('posts'));
     }
 
     /**
