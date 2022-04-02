@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\NewsPost;
 
 class NewsController extends Controller
 {
@@ -11,17 +13,9 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(NewsPost $newsPosts)
     {
-        $post = (object) [
-            "id" => 1,
-            "time" => 1,
-            "title" => "Lorem, ipsum dolor.",
-            "content" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, accusantium?",
-
-        ];
-
-        $posts = array_fill(0, 10, $post);
+        $posts = $newsPosts->all();
         return view('home.index', compact('posts'));
     }
 

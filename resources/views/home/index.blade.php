@@ -4,13 +4,13 @@
     <h1>Main</h1>
     <section>
         <div class="container">
-            <div class="row">
+            <div class="row d-flex justify-content-center">
                 @foreach($posts as $post)
-                <div class="col-6 py-3">
+                <div class=" col-4 p-12 mt-3">
                     <x-card>
                         <h2 class="h4">{{ $post->title }}</h2>
                         <div>
-                            {{ $post->time }}
+                            {{ $post->published_at }}
                         </div>
                         <p>
                             {{ $post->content }}

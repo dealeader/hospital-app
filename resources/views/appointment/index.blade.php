@@ -8,96 +8,80 @@
         <div class="container">
             <div class="row">
                 <div class="col-3">
-                    <div class="accordion accordion-flush" id="accordionFlushExample">
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                категория
-                            </button>
-                          </h2>
-                          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne">
-                            <div class="accordion-body">1</div>
-                          </div>
-                        </div>
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="flush-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                категория
-                            </button>
-                          </h2>
-                          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo">
-                            <div class="accordion-body">1</div>
-                          </div>
-                        </div>
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="flush-headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                категория
-                            </button>
-                          </h2>
-                          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree">
-                            <div class="accordion-body">1</div>
-                          </div>
-                        </div>
-                      </div>
+                    <x-categories>
+                        @foreach($categories as $category)
+                        <x-categories-item>
+                        @if(is_null($category->parent_id))
+                            <x-categories-item-title>{{ $category->name }}</x-categories-item-title>     
+                        @else
+                            <x-categories-item-option>{{ $category->name }}</x-categories-item-option>
+                        @endif
+                        </x-categories-item>
+                        @endforeach
+                    </x-categories>
                 </div>
                 <div class="col-9">
                     <table class="table table-borderless">
-                        <th>Пн</th>
-                        <th>Вт</th>
-                        <th>Ср</th>
-                        <th>Чт</th>
-                        <th>Пт</th>
-                        <th>Сб</th>
-                        <th>Вс</th>
-                        <tr>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                        </tr>
-                        <tr>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                        </tr>
-                        <tr>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                        </tr>
-                        <tr>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                        </tr>
-                        <tr>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                            <td><button class="btn btn-success">1</button></td>
-                        </tr>
+                        <x-calendar-header />
+                        <x-calendar-row>
+                            <x-calendar-button>1</x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button>7</x-calendar-button>
+                        </x-calendar-row>
+                        <x-calendar-row>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button>14</x-calendar-button>
+                        </x-calendar-row>
+                        <x-calendar-row>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                        </x-calendar-row>
+                        <x-calendar-row>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                        </x-calendar-row>   
+                        <x-calendar-row>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                            <x-calendar-button></x-calendar-button>
+                        </x-calendar-row>  
                       </table>
                 </div>
             </div>
         </div>
     </section>
+    <x-modal />
+
+    <script type="text/javascript">
+          $('#calendarModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var date = button.data('whatever')
+            var modal = $(this)
+            modal.find('.modal-title').text('Запись на ' + date)
+            modal.find('.modal-body input').val(date)
+          })
+    </script>
 @endsection
