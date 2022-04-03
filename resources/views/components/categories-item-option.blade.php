@@ -1,5 +1,5 @@
-<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne">
+<div class="accordion-collapse collapse " id="flush-collapse-{{ $id }}" aria-labelledby="flush-heading-{{ $id }}">
     <div class="accordion-body">
-        <a href=""> {{ $slot }} </a>
+        <a href="{{ route('home') }}"> {{ $slot }} </a>
     </div>
   </div>
