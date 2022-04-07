@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,6 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(NewsSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(CategoriesSeeder::class);
+        $this->call(DaysSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }
