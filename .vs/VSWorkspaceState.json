@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\database",
+    "\\database\\migrations",
+    "\\database\\seeders",
+    "\\routes"
+  ],
+  "SelectedNode": "\\database\\migrations\\2022_03_31_151425_create_days_table.php",
+  "PreviewInSolutionExplorer": false
+}
