@@ -11,8 +11,18 @@ class Category extends Model
 
     protected $guarded = [];
 
+    public function getRouteKeyName()
+    {
+        return 'name';    
+    }
+
     public function childs()
     {
         return $this->hasMany(Category::class, 'parent_id', 'id');
+    }
+
+    public function days()
+    {
+        return $this->hasMany(Day::class);
     }
 }
