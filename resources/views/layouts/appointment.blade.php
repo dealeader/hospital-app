@@ -12,11 +12,12 @@
                 @yield('appointment.content')
             </div>
             <div class="col-9">
-                @yield('appointment.content2')
+                @yield('appointment.calendar')
             </div>
         </div>
     </div>
 </section>
+
 <x-modal />
 
 <script type="text/javascript">

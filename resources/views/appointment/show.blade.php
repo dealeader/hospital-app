@@ -1,7 +1,4 @@
 @extends('layouts.appointment')
-
-@section('page.title', 'Запись на прием')
-
 @section('appointment.content')
     <x-categories>
         @foreach($categories as $category)
@@ -21,3 +18,20 @@
     </x-categories>
 @endsection
 
+@section("appointment.calendar")
+    <table class="table table-borderless absolute">
+        <x-calendar-header />
+        @for ($i = 0; $i < 5; $i++)
+            <x-calendar-row>
+                @for ($i = 0; $i < count($days); $i++)
+                    <x-calendar-button date="{{ $days[$i]->date->format('d.m.Y') }}" >
+                        {{ $days[$i]->date->format('d'); }}
+                    </x-calendar-button>
+                    @if($i % 7 === 6)
+                    <tr></tr>
+                    @endif
+                @endfor
+            </x-calendar-row>
+        @endfor
+    </table>
+@endsection

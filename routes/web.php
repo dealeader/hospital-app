@@ -22,6 +22,9 @@ use Illuminate\Support\Facades\Auth;
 Route::redirect('/', 'home');
 
 Route::get('appointment', [AppointmentController::class, 'index'])->name('appointment');
+Route::get('appointment/{name?}', [AppointmentController::class, 'show'])->name('appointment.show');
+
+
 
 
 Route::get('home', [NewsController::class, 'index'])->name('home');
