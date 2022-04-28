@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -34,7 +35,17 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        return 'запрос на регистрацию';
+        $user = User::create([
+            "first_name" => $request->input('name'),
+            "document" => $request->input('document'),
+            "password" => bcrypt($request->input('password')), 
+        ]);
+
+        if ($user) {
+            auth('web')->login($user);
+        }
+
+        return redirect(route('home'));
     }
 
     /**

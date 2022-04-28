@@ -19,7 +19,7 @@
                 <x-input type="password" name="password" placeholder="Введите пароль" />
             </x-form-item>
             <x-form-item>
-                <x-input type="password" name="password_agreement" placeholder="Подтвердите пароль" />
+                <x-input type="password" name="password_confirmation" placeholder="Подтвердите пароль" />
             </x-form-item>
             <x-form-item>
                 <x-checkbox name="data_agreement">согласие на обработку персональных данных</x-checkbox>

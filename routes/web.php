@@ -29,8 +29,14 @@ Route::get('appointment/{name?}', [AppointmentController::class, 'show'])->name(
 
 Route::get('home', [NewsController::class, 'index'])->name('home');
 
-Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('login', [LoginController::class, 'store'])->name('login.store');
+Route::middleware('guest')->group(function () {
 
-Route::get('register', [RegisterController::class, 'index'])->name('register');
-Route::post('register', [RegisterController::class, 'store'])->name('register.store');
+    Route::get('login', [LoginController::class, 'index'])->name('login');
+    Route::post('login', [LoginController::class, 'store'])->name('login.store');
+
+    Route::get('register', [RegisterController::class, 'index'])->name('register');
+    Route::post('register', [RegisterController::class, 'store'])->name('register.store');
+});
+
+
+Route::get('login/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');

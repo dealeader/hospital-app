@@ -8,9 +8,20 @@
                 </a>
             </div>
 
-            <div class="d-flex flex-row-reverse">
+            @auth("web")
+                <div class="d-flex flex-row-reverse">
+                    <div class="p-2"><a href={{ route('appointment') }}>запись на прием</a></div>
+                    <div class="p-2"><a href={{ route('logout') }}>выйти</a></div>
+                </div>
+            @endauth
+
+            @guest("web")
+                <div class="d-flex flex-row-reverse">
                     <div class="p-2"><a href={{ route('appointment') }}>запись на прием</a></div>
                     <div class="p-2"><a href={{ route('login') }}>личный кабинет</a></div>
-        </div>
+                </div>
+            @endguest
+
+            
     </div>
 </header>

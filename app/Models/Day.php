@@ -11,6 +11,13 @@ class Day extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $dates = [
+        'date',
+    ];
+
+    protected $casts = [
+        'isFree' => 'boolean',
+    ];
 
     public function childs()
     {
@@ -23,5 +30,4 @@ class Day extends Model
             $day->date = Carbon::parse($day->date);
         }   
     }
-
 }

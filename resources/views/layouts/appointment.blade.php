@@ -18,16 +18,4 @@
     </div>
 </section>
 
-<x-modal />
-
-<script type="text/javascript">
-      $('#calendarModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget)
-        var date = button.data('whatever')
-        var modal = $(this)
-        modal.find('.modal-title').text('Запись на ' + date)
-        modal.find('.modal-body input').val(date)
-      })
-</script>
-
 @endsection
