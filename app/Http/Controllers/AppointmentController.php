@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cache;
 
 class AppointmentController extends Controller
 {
-    public function index(Category $categories)
+    public function index()
     {
         Cache::rememberForever('categories', function () {
             return Category::get();

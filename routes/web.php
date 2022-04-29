@@ -4,6 +4,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,5 +39,8 @@ Route::middleware('guest')->group(function () {
     Route::post('register', [RegisterController::class, 'store'])->name('register.store');
 });
 
-
-Route::get('login/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('account/logout', [LoginController::class, 'logout'])->name('account.logout');
+    Route::get('account', [AccountController::class, 'index'])->name('account');
+    Route::get('account/{id}', [AccountController::class, 'show'])->name('account.show');
+});

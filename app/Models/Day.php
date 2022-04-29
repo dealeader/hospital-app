@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
 
 class Day extends Model
 {
@@ -24,10 +23,8 @@ class Day extends Model
         return $this->hasMany(Day::class, 'parent_id', 'id');
     }
 
-    public static function parseDates($days) 
+    public function category() 
     {
-        foreach($days as $day) {
-            $day->date = Carbon::parse($day->date);
-        }   
+        return $this->belongsTo(Category::class);
     }
 }

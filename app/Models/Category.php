@@ -25,4 +25,9 @@ class Category extends Model
     {
         return $this->hasMany(Day::class);
     }
+
+    public function doctor()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
