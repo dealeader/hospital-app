@@ -12,18 +12,10 @@ class AccountController extends Controller
 {
     public function index()
     {
-        return view('account.index');
-    }
-
-    public function show($id)
-    {
-        $response = $id == Auth::id() 
-            ? view('account.show', [
-                'user' => User::find($id),
-                'times' => Day::where('patient_id', '=', $id)->get(),
-            ])
-            : redirect(route('account.show', [ 'id' => Auth::id()]));
-
-        return $response;
+        $id = Auth::id();
+        return view('account.index', [
+            'user' => User::find($id),
+            'times' => Day::where('patient_id', '=', $id)->get(),
+        ]);
     }
 }

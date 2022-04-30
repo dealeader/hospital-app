@@ -40,7 +40,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('account/logout', [LoginController::class, 'logout'])->name('account.logout');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('account', [AccountController::class, 'index'])->name('account');
     Route::get('account/{id}', [AccountController::class, 'show'])->name('account.show');
 });
