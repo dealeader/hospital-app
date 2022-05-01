@@ -20,56 +20,56 @@ class CategoriesSeeder extends Seeder
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => NULL,
             'doctor_id' => 1,
-            'name' => "Jrekbcn",
+            'name' => "Категория 1",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => 1,
             'doctor_id' => 1,
-            'name' => "frdhfyghjng",
+            'name' => "Окулист",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => 1,
             'doctor_id' => 2,
-            'name' => "frdhfyghjnge",
+            'name' => "Лор",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => 1,
             'doctor_id' => 2,
-            'name' => "grgdzfgbfrdhfyghjng",
+            'name' => "Для ушей",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => NULL,
             'doctor_id' => 1,
-            'name' => "Jrekbcntrtyfrth",
+            'name' => "Категория 2",
+        ]);
+        DB::table('categories')->insert([
+            'created_at' => "2022-04-06 17:00:00",
+            'updated_at' => "2022-04-06 17:00:00",
+            'parent_id' => 2,
+            'doctor_id' => 2,
+            'name' => "Зубной",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => 1,
             'doctor_id' => 2,
-            'name' => "fTRtrgfgdr",
+            'name' => "Терапевт",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
-            'parent_id' => 1,
-            'doctor_id' => 2,
-            'name' => "frdhfyghjngTERGTSe",
-        ]);
-        DB::table('categories')->insert([
-            'created_at' => "2022-04-06 17:00:00",
-            'updated_at' => "2022-04-06 17:00:00",
-            'parent_id' => 1,
+            'parent_id' => 2,
             'doctor_id' => 1,
-            'name' => "gTRGygjhhts",
+            'name' => "Кто-то",
         ]);
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('days', function (Blueprint $table) {
-            $table->foreignId('parent_id')->nullable()->change();
+            $table->foreignId('patient_id')->nullable()->change();
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('days', function (Blueprint $table) {
-            $table->foreignId('parent_id')->nullable(false)->change();
+            $table->foreignId('patient_id')->nullable(false)->change();
         });
     }
 };
