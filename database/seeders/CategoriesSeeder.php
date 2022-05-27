@@ -48,7 +48,7 @@ class CategoriesSeeder extends Seeder
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
-            'parent_id' => 2,
+            'parent_id' => 5,
             'name' => "Зубной",
         ]);
         DB::table('categories')->insert([
@@ -60,7 +60,7 @@ class CategoriesSeeder extends Seeder
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
-            'parent_id' => 2,
+            'parent_id' => 5,
             'name' => "Кто-то",
         ]);
     }
