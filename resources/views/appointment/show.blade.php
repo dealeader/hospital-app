@@ -23,9 +23,9 @@
         <x-calendar-header />
         @foreach ($days as $day)
         <x-calendar-row>
-            <x-calendar-button date="{{ $day->date->format('d.m.Y') }}">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="{{ $day->date->format('d.m.Y') }}">
                 {{ $day->date->format('d') }}
-            </x-calendar-button>
+            </button>
         </x-calendar-row>
         @endforeach   
     </table>
@@ -33,24 +33,23 @@
 {{-- <x-modal times={{ $times }}></x-modal> --}}
 @endsection
 
-    
-<div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="calendarModalLabel">Запись на</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="input-group mb-3">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Запись на</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+        <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <label class="input-group-text" for="modal-select">Врач</label>
+                            <label class="input-group-text" for="modal-select">Врач</label>       
                         </div>
                         <select class="custom-select" id="modal-select">
-                            
+                            @foreach ($doctors as $doctor)
+                                <option>{{ $doctor->second_name}}</option>
+                            @endforeach 
                         </select>
                     </div>
                     <div class="m-2">
@@ -58,30 +57,33 @@
                         <div>
                             <table>
                                 @foreach ($times as $time)
-                                {{dump($time)}}
-                                    <button class="btn btn-success m-2">
-                                        {{ $time->date->hour }}
-                                    </button>
+                                    <div class="m-2">
+                                        <input name="dzen" type="radio" value="nedzen" id="message-text"> {{ $time->date->format('d.m.Y H:i') }}
+                                    </div>
                                 @endforeach
                             </table>
                         </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-success">записаться</button>
-            </div>
-        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary">Записаться</button>
+      </div>
     </div>
   </div>
+</div>
 
 
-<script type="text/javascript">
-    $('#calendarModal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget)
-      var date = button.data('whatever')
-      var modal = $(this)
-      modal.find('.modal-title').text('Запись на ' + date)
-      modal.find('.modal-body input').val(date)
-    })
+<script>
+var exampleModal = document.getElementById('exampleModal')
+exampleModal.addEventListener('show.bs.modal', function (event) {
+  var button = event.relatedTarget
+  var recipient = button.getAttribute('data-bs-whatever')
+  var modalTitle = exampleModal.querySelector('.modal-title')
+  var modalBody = exampleModal.querySelector('.modal-body input')
+
+  modalTitle.textContent = 'Запись на ' + recipient
+  modalBody.value = recipient 
+})
 </script>
