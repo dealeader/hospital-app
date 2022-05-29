@@ -1,26 +1,27 @@
 @extends('layouts.base')
 
-@section('page.title', "Категории")
+@section('page.title', "Посты")
 
 @section('content')
-    <h2 class="h4">{{ $category->name }}</h2>
+    <h2 class="h4">{{ $post->name }}</h2>
     <div class="container">
         <div class="row d-flex justify-content-center">
             <table class="table">
                 <tr>
                     <td>Название</td>
-                    <td>{{ $category->name }}</td>
+                    <td>{{ $post->title }}</td>
                 </tr>
                 <tr>
-                    <td>Краткое описание</td>
+                    <td>Содержание</td>
                     <td>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        <div>
+                            {{ $post->content }}
                         </div>
                     </td>
                 </tr>
             </table>
-            <a class="mr-3" href={{ route('admin.categories.edit', $category) }}>редактировать</a>
-            <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
+            <a class="mr-3" href={{ route('admin.newsposts.edit', $post->id) }}>редактировать</a>
+            <form action="{{ route('admin.newsposts.destroy', $post) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="text-left text-danger bg-transparent border-0">

@@ -1,27 +1,27 @@
 @extends('layouts.base')
 
-@section('page.title', 'Категории')
+@section('page.title', 'Посты')
 
 @section('content')
-    <h2 class="h4">Редактирование категории</h2>
+    <h2 class="h4">Редактирование поста</h2>
     <section>
 
         <x-card>
-            <x-card-header>Форма редактирования категории</x-card-header>
+            <x-card-header>Форма редактирования поста</x-card-header>
             <x-card-body>
-                <x-form action="{{ route('admin.categories.update', $category) }}" method="POST">
+                <x-form action="{{ route('admin.newsposts.update', $post->id) }}" method="POST">
                     @method('PATCH')
                     <x-form-item>
-                        <label>Название категории</label>
-                        <x-input name="name" value="{{ $category->name }}" />
+                        <label>Название поста</label>
+                        <x-input name="title" value="{{ $post->title }}" />
                     </x-form-item>
                     <x-form-item>
-                        <label>Краткое описание категории</label>
-                        <x-input name="content" value="lorem ipsum" />
+                        <label>Содержание</label>
+                        <x-input name="content" value="{{ $post->content }}" />
                     </x-form-item>
                     <x-form-item>
                         <x-button>
-                            Редактировать категорию
+                            Редактировать пост
                         </x-button>
                     </x-form-item>
                 </x-form>

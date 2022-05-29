@@ -8,7 +8,7 @@
             Вход
         </x-card-header>
         <x-card-body>
-            <x-form action="{{ route('login.store'); }}" method="POST">
+            <x-form action="{{ route('login.store') }}" method="POST">
                 <x-form-item>
                     <x-input name='document' placeholder="Введите полис" />
                 </x-form-item>

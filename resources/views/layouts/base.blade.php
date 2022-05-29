@@ -14,13 +14,13 @@
 <body>
     <div class="d-flex flex-column justify-content-between min-vh-100 text-center">
         @include('includes.header')
-            <main class="flex-grow-1 py-3">
+            <main class="flex-grow-1 py-3 container">
                 @yield('content')
             </main>
         @include('includes.footer')
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    
+
 </body>
 </html>

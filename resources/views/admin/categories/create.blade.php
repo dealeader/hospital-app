@@ -1,23 +1,33 @@
 @extends('layouts.base')
 
-@section('page.title', 'Создание поста')
+@section('page.title', 'Создание категории')
 
 @section('content')
-    <h2 class="h4">Создание поста</h2>
+    <h2 class="h4">Создание категории</h2>
     <x-card>
         <x-card-header>Форма создания поста</x-card-header>
         <x-card-body>
-            <x-form action="{{ route('admin.newsposts.store') }}" method="POST">
+            <x-form action="{{ route('admin.categories.store') }}" method="POST">
                 <x-form-item>
                     <label>Заголовок поста</label>
-                    <x-input name="title" placeholder="Введите заголовок поста" />
+                    <x-input name="name" placeholder="Введите название категории" />
                 </x-form-item>
                 <x-form-item>
                     <label>Содержание поста</label>
-                    <x-input name="content" placeholder="Введите содержание поста" />
+                    <x-input name="content" placeholder="Введите краткое описание" />
                 </x-form-item>
                 <x-form-item>
-                    <x-button>Создать пост</x-button>
+                    <label>Вложить в:</label>
+                    <select class="form-control" name="parent_id" id="parent_id">
+                        <option value="{{ null }}" {{ null == old('parent') ? ' selected' : '' }}>Не вкладывать</option>
+                        @foreach($parentCategories as $parent)
+                            <option value="{{ $parent->id }}"
+                                {{ $parent->id == old('parent_id') ? ' selected' : '' }}> {{ $parent->name }}</option>
+                        @endforeach
+                    </select>
+                </x-form-item>
+                <x-form-item>
+                    <x-button>Создать категорию</x-button>
                 </x-form-item>
             </x-form>
         </x-card-body>

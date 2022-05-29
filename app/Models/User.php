@@ -12,13 +12,29 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public const ROLE_ADMIN = 'doctor';
+    public const ROLE_PATIENT = 'patient';
+
+    public static function getRoles()
+    {
+        return [
+            self::ROLE_ADMIN => 'Администратор',
+            self::ROLE_PATIENT => 'Пользователь',
+        ];
+    }
+
     protected $guarder = [];
 
     protected $fillable = [
         'first_name',
+        'second_name',
+        'patronymic',
         'document',
+        'work_expirience',
+        'role',
         'password',
-        'password_confirmation'
+        'password_confirmation',
+
     ];
 
     protected $hidden = [

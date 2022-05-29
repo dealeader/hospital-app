@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('page.title', 'Посты')
+@section('page.title', 'Время записи')
 
 @section('content')
     <h2 class="h4">Редактирование поста</h2>
