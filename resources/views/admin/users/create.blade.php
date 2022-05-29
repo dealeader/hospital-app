@@ -30,9 +30,12 @@
                 </x-form-item>
                 <x-form-item>
                     <label>Роль пользователя</label>
-                    <select name="role" id="role">
-                        @foreach($roles as $role)
-                            <option>{{ $role }}</option>
+                    <select class="form-control" name="role">
+                        @foreach($roles as $id => $role)
+                            <option value="{{ $id }}"
+                                {{ $id == old('role') ? ' selected' : '' }}>
+                                {{ $role }}
+                            </option>
                         @endforeach
                     </select>
                 </x-form-item>
@@ -42,11 +45,12 @@
                 </x-form-item>
                 <x-form-item>
                     <label>Специализация пользователя (необязательно)</label>
-                    <select class="form-control" name="role">
-                        @foreach($roles as $id => $role)
-                            <option value="{{ $id }}"
-                                {{ $id == old('role') ? ' selected' : '' }}
-                            >{{ $role }}</option>
+                    <select class="form-control" name="category_id">
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}"
+                                {{ $category->id == old('category_id') ? ' selected' : '' }}>
+                                {{ $category->name }}
+                            </option>
                         @endforeach
                     </select>
                 </x-form-item>

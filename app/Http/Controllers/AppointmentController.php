@@ -12,19 +12,14 @@ class AppointmentController extends Controller
 {
     public function index()
     {
-        Cache::rememberForever('categories', function () {
-            return Category::get();
-        });
-
-        return view('appointment.index', [
-            'categories' => Cache::get('categories'),
-        ]);
+        $categories = Category::all();
+        return view('appointment.index', compact('categories'));
     }
 
     public function show(Category $name, Day $days)
     {
         return view('appointment.show', [
-            'categories' => Cache::get('categories'),
+            'categories' => Category::all(),
             'days' => $days->whereNull('parent_id')->get(),
             'times' => $days->where('category_id', '=', $name->id)->whereNotNull('parent_id')->get(),
         ]);

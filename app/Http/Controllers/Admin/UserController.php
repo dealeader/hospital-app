@@ -29,7 +29,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->all(); #ПЕРЕДЕЛАТЬ С ВАЛИДАЦИЕЙ
-
         User::firstOrCreate(['document' => $data['document']], $data);
 
         return redirect()->route('admin.users.index');

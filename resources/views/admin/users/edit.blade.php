@@ -48,9 +48,11 @@
                     </x-form-item>
                     <x-form-item>
                         <label>Специализация пользователя (необязательно)</label>
-                        <select class="form-control" name="category" id="category">
+                        <select class="form-control" name="category_id" id="category">
                             @foreach($categories as $category)
-                                <option>{{ $category->name }}</option>
+                                <option value="{{ $category->id }}"
+                                    {{ $category->id == old('category_id') ? ' selected' : '' }}
+                                >{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </x-form-item>

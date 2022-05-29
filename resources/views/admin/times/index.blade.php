@@ -12,7 +12,7 @@
                     <x-card>
                         <x-card-header>
                             <a href="{{ route('admin.times.show', $time->id) }}">
-                                {{ $time->date }}
+                                {{ $time->date->toDateString() }}
                             </a>
                         </x-card-header>
                         <x-card-body>
@@ -20,7 +20,7 @@
                                 @foreach($time->childs as $child)
                                     <div>
                                         <a href="{{ route('admin.times.show', $child->id) }}">
-                                            {{ $child->date }}
+                                            {{ $child->date->toTimeString() }}
                                         </a>
                                     </div>
                                 @endforeach

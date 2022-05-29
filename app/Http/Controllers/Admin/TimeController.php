@@ -31,8 +31,15 @@ class TimeController extends Controller
     {
         $data = $request->all(); #ВАЛИДАЦИЯ
 
-//        $data['date'] = Carbon::create($data['date']);
-//        dd($data);
+        $parent = Day::where('id', $data['parent_id'])->first();
+        $data['date'] = $parent->date->toDateString() . ' ' . $data['date'];
+
+        if (isset($data['isFree'])) {
+            $data['isFree'] = '1';
+        } else {
+            $data['isFree'] = '0';
+        }
+
         Day::firstOrCreate(['date' => $data['date']], $data);
 
         return redirect()->route('admin.times.index');
@@ -47,13 +54,28 @@ class TimeController extends Controller
 
     public function edit(Day $time)
     {
-        return view('admin.times.edit', compact('time'));
+        $categories = Category::whereNotNull('parent_id')->get();
+        $parentDays = Day::whereNull('parent_id')->get();
+        return view('admin.times.edit', compact('time', 'categories', 'parentDays'));
     }
 
 
     public function update(Request $request, Day $time)
     {
+        $data = $request->all(); #ВАЛИДАЦИЯ
 
+        $parent = Day::where('id', $data['parent_id'])->first();
+        $data['date'] = $parent->date->toDateString() . ' ' . $data['date'];
+
+        if (isset($data['isFree'])) {
+            $data['isFree'] = '1';
+        } else {
+            $data['isFree'] = '0';
+        }
+
+        $time->update($data);
+
+        return redirect()->route('admin.times.index');
     }
 
 

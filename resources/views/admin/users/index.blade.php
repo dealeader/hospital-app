@@ -14,6 +14,7 @@
                 <td>Отчество</td>
                 <td>Номер полиса</td>
                 <td>Роль</td>
+                <td>Специализация</td>
                 <td>Опыт работы</td>
                 <td>Действия</td>
             </thead>
@@ -25,10 +26,11 @@
                     <td>{{ $user->patronymic }}</td>
                     <td>{{ $user->document }}</td>
                     <td>{{ $user->role }}</td>
+                    <td>{{ $user->category_id }}</td>
                     <td>{{ $user->work_expirience }}</td>
                     <td class="d-flex">
                         <a class="mr-3" href={{ route('admin.users.edit', $user->id) }}>редактировать</a>
-                        <form  action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
+                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-left text-danger bg-transparent border-0">

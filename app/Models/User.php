@@ -32,6 +32,7 @@ class User extends Authenticatable
         'document',
         'work_expirience',
         'role',
+        'category_id',
         'password',
         'password_confirmation',
 

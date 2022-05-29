@@ -12,7 +12,8 @@
                     <label>Дата</label>
                     <select class="form-control" name="parent_id">
                         @foreach($parentDays as $parent)
-                            <option value="{{ $parent->id }}">
+                            <option value="{{ $parent->id }}"
+                                {{ $parent->id == old('parent_id') ? ' selected' : '' }}>
                                 {{ $parent->date->toDateString() }}
                             </option>
                         @endforeach
@@ -26,11 +27,17 @@
                     <label>Категория</label>
                     <select class="form-control" name="category_id">
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">
+                            <option value="{{ $category->id }}"
+                                {{ $category->id == old('parent_id') ? ' selected' : '' }}>
                                 {{ $category->name }}
                             </option>
                         @endforeach
                     </select>
+                </x-form-item>
+                <x-form-item>
+                    <label >Статус</label>
+                    <x-input class="form-control" type="radio" name="isFree" id="isFree" />
+                    <label for="isFree">Занято</label>
                 </x-form-item>
                 <x-form-item>
                     <x-button>Добавить запись</x-button>
