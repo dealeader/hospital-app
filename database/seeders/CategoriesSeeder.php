@@ -19,56 +19,48 @@ class CategoriesSeeder extends Seeder
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => NULL,
-            'doctor_id' => 1,
             'name' => "Категория 1",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => 1,
-            'doctor_id' => 1,
             'name' => "Окулист",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => 1,
-            'doctor_id' => 2,
             'name' => "Лор",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => 1,
-            'doctor_id' => 2,
             'name' => "Для ушей",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => NULL,
-            'doctor_id' => 1,
             'name' => "Категория 2",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
-            'parent_id' => 2,
-            'doctor_id' => 2,
+            'parent_id' => 5,
             'name' => "Зубной",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
             'parent_id' => 1,
-            'doctor_id' => 2,
             'name' => "Терапевт",
         ]);
         DB::table('categories')->insert([
             'created_at' => "2022-04-06 17:00:00",
             'updated_at' => "2022-04-06 17:00:00",
-            'parent_id' => 2,
-            'doctor_id' => 1,
+            'parent_id' => 5,
             'name' => "Кто-то",
         ]);
     }
