@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserStoreRequest;
+use App\Http\Requests\Admin\UserUpdateRequest;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,9 +28,9 @@ class UserController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $data = $request->all(); #ПЕРЕДЕЛАТЬ С ВАЛИДАЦИЕЙ
+        $data = $request->validated(); #ПЕРЕДЕЛАТЬ С ВАЛИДАЦИЕЙ
         User::firstOrCreate(['document' => $data['document']], $data);
 
         return redirect()->route('admin.users.index');
@@ -48,9 +50,9 @@ class UserController extends Controller
         return view('admin.users.edit', compact('user', 'roles', 'categories'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        $user->update($request->all()); #ПЕРЕДЕЛАТЬ С НОРМАЛЬНОЙ ВАЛИДАЦИЕЙ
+        $user->update($request->validated()); #ПЕРЕДЕЛАТЬ С НОРМАЛЬНОЙ ВАЛИДАЦИЕЙ
         return redirect()->route('admin.users.index', compact('user'));
     }
 

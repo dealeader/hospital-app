@@ -23,8 +23,13 @@ class Day extends Model
         return $this->hasMany(Day::class, 'parent_id', 'id');
     }
 
-    public function category() 
+    public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function doctor()
+    {
+        return $this->belongsTo(User::class);
     }
 }

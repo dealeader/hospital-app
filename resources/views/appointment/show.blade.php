@@ -1,4 +1,5 @@
 @extends('layouts.appointment')
+
 @section('appointment.content')
     <x-categories>
         @foreach($categories as $category)
@@ -18,70 +19,37 @@
     </x-categories>
 @endsection
 
-@section("appointment.calendar")
-    <table class="table table-borderless absolute">
-        <x-calendar-header />
-        @foreach ($days as $day)
-        <x-calendar-row>
-            <x-calendar-button date="{{ $day->date->format('d.m.Y') }}">
-                {{ $day->date->format('d') }}
-            </x-calendar-button>
-        </x-calendar-row>
-        @endforeach   
-    </table>
+@section("appointment.form")
+    <x-form
+        action="{{ route('appointment.findTimes', compact('name')) }}"
+        method="GET"
+    >
+        <x-input type="date" name="date" value="{{ old('date') }}" />
+        <select class="mt-3 mb-3 form-control" name="doctor" id="doctor">
+            @foreach($doctors as $doctor)
+                <option value="{{ $doctor->id }}">{{ $doctor->second_name }} {{ $doctor->first_name }}</option>
+            @endforeach
+        </select>
+        <x-button>найти даты</x-button>
 
-{{-- <x-modal times={{ $times }}></x-modal> --}}
+    </x-form>
+
+    @if(isset($times))
+        <x-form class="mt-3" action="{{ route('appointment.appoint') }}" method="POST">
+            @method('PATCH')
+            @foreach($times as $time)
+                <label class="mt-3 mb-3 btn btn-success">
+                    {{ $time->date->toTimeString() }}
+                    <x-input type="radio" name="date" value="{{ $time->date }}" />
+                </label>
+            @endforeach
+            <x-button class="mt-3 d-inline">записаться</x-button>
+        </x-form>
+    @endif
+
 @endsection
 
-    
-<div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="calendarModalLabel">Запись на</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="modal-select">Врач</label>
-                        </div>
-                        <select class="custom-select" id="modal-select">
-                            
-                        </select>
-                    </div>
-                    <div class="m-2">
-                        <label for="message-text" class="form-label">Время</label>
-                        <div>
-                            <table>
-                                @foreach ($times as $time)
-                                {{dump($time)}}
-                                    <button class="btn btn-success m-2">
-                                        {{ $time->date->hour }}
-                                    </button>
-                                @endforeach
-                            </table>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-success">записаться</button>
-            </div>
-        </div>
-    </div>
-  </div>
 
 
-<script type="text/javascript">
-    $('#calendarModal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget)
-      var date = button.data('whatever')
-      var modal = $(this)
-      modal.find('.modal-title').text('Запись на ' + date)
-      modal.find('.modal-body input').val(date)
-    })
-</script>
+
+

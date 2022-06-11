@@ -24,12 +24,12 @@ Route::redirect('/', 'home');
 
 Route::get('appointment', [AppointmentController::class, 'index'])->name('appointment');
 Route::get('appointment/{name?}', [AppointmentController::class, 'show'])->name('appointment.show');
-
-
-
+Route::get('appointment/{name?}/findTimes', [AppointmentController::class, 'findTimes'])->name('appointment.findTimes');
+Route::patch('appointment/appoint', [AppointmentController::class, 'appoint'])->name('appointment.appoint');
 
 Route::get('home', [NewsController::class, 'index'])->name('home');
 Route::post('login', [LoginController::class, 'store'])->name('login.store');
+
 Route::middleware('guest')->group(function () {
 
     Route::get('login', [LoginController::class, 'index'])->name('login');

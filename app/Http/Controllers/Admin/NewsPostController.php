@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\NewsPostStoreRequest;
+use App\Http\Requests\Admin\NewsPostUpdateRequest;
 use App\Models\NewsPost;
 use Illuminate\Http\Request;
 
@@ -21,10 +23,9 @@ class NewsPostController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(NewsPostStoreRequest $request)
     {
-        $data = $request->all(); #ПЕРЕДЕЛАТЬ С ВАЛИДАЦИЕЙ
-
+        $data = $request->validated();
         NewsPost::firstOrCreate(['title' => $data['title']], $data);
 
         return redirect()->route('admin.newsposts.index');
@@ -43,9 +44,9 @@ class NewsPostController extends Controller
     }
 
 
-    public function update(Request $request, NewsPost $post)
+    public function update(NewsPostUpdateRequest $request, NewsPost $post)
     {
-        $post->update($request->all()); #ПЕРЕДЕЛАТЬ С НОРМАЛЬНОЙ ВАЛИДАЦИЕЙ
+        $post->update($request->validated());
         return redirect()->route('admin.newsposts.index', compact('post'));
     }
 

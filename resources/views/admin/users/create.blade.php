@@ -14,19 +14,31 @@
                 </x-form-item>--}}
                 <x-form-item>
                     <label>Имя пользователя</label>
-                    <x-input name="first_name" placeholder="Введите имя пользователя" />
+                    <x-input name="first_name" placeholder="Введите имя пользователя" value="{{ old('first_name') }}"/>
+                    @error('first_name')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Фамилия пользователя</label>
-                    <x-input name="second_name" placeholder="Введите фамилию пользователя" />
+                    <x-input name="second_name" placeholder="Введите фамилию пользователя" value="{{ old('second_name') }}"/>
+                    @error('second_name')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Отчество пользователя</label>
-                    <x-input name="patronymic" placeholder="Введите отчество пользователя" />
+                    <x-input name="patronymic" placeholder="Введите отчество пользователя" value="{{ old('patronymic') }}"/>
+                    @error('patronymic')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Номер полиса пользователя</label>
-                    <x-input name="document" placeholder="Введите номер полиса пользователя" />
+                    <x-input name="document" placeholder="Введите номер полиса пользователя" value="{{ old('document') }}"/>
+                    @error('document')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Роль пользователя</label>
@@ -38,10 +50,16 @@
                             </option>
                         @endforeach
                     </select>
+                    @error('role')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Опыт работы пользователя (необязательно)</label>
-                    <x-input name="work_expirience" placeholder="Введите опыт работы пользователя" />
+                    <x-input name="work_expirience" placeholder="Введите опыт работы пользователя" value="{{ old('work_expirience') }}"/>
+                    @error('work_expirience')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Специализация пользователя (необязательно)</label>
@@ -53,10 +71,16 @@
                             </option>
                         @endforeach
                     </select>
+                    @error('category_id')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Пароль для пользователя</label>
-                    <x-input type="password" name="password" placeholder="Введите пароль для пользователя" />
+                    <x-input type="password" name="password" placeholder="Введите пароль для пользователя" value="{{ old('password') }}"/>
+                    @error('password')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <x-button>Создать пользователя</x-button>

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TimeStoreRequest;
+use App\Http\Requests\Admin\TimeUpdateRequest;
 use App\Models\Category;
 use App\Models\Day;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -23,13 +26,14 @@ class TimeController extends Controller
         $categories = Category::whereNotNull('parent_id')->get();
         $parentDays = Day::whereNull('parent_id')->get();
 
+
         return view('admin.times.create', compact('categories', 'parentDays'));
     }
 
 
-    public function store(Request $request)
+    public function store(TimeStoreRequest $request)
     {
-        $data = $request->all(); #ВАЛИДАЦИЯ
+        $data = $request->validated();
 
         $parent = Day::where('id', $data['parent_id'])->first();
         $data['date'] = $parent->date->toDateString() . ' ' . $data['date'];
@@ -56,13 +60,15 @@ class TimeController extends Controller
     {
         $categories = Category::whereNotNull('parent_id')->get();
         $parentDays = Day::whereNull('parent_id')->get();
-        return view('admin.times.edit', compact('time', 'categories', 'parentDays'));
+        $doctors = User::where('category_id', $time->category_id)->get();
+
+        return view('admin.times.edit', compact('time', 'categories', 'parentDays', 'doctors'));
     }
 
 
-    public function update(Request $request, Day $time)
+    public function update(TimeUpdateRequest $request, Day $time)
     {
-        $data = $request->all(); #ВАЛИДАЦИЯ
+        $data = $request->validated();
 
         $parent = Day::where('id', $data['parent_id'])->first();
         $data['date'] = $parent->date->toDateString() . ' ' . $data['date'];

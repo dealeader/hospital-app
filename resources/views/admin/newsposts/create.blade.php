@@ -11,10 +11,18 @@
                 <x-form-item>
                     <label>Заголовок поста</label>
                     <x-input name="title" placeholder="Введите заголовок поста" />
+
+                    @error('title')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Содержание поста</label>
                     <x-input name="content" placeholder="Введите содержание поста" />
+
+                    @error('content')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <x-button>Создать пост</x-button>

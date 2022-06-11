@@ -11,6 +11,20 @@
                     <td>Название</td>
                     <td>{{ $category->name }}</td>
                 </tr>
+                @if (is_null($category->parent_id))
+                <tr>
+                    <td>Содержит в себе:</td>
+                    <td>
+                        <div>
+                            @foreach($category->childs as $child)
+                                <a href={{ route('admin.categories.show', $child->name) }}>
+                                    {{ $child->name }}
+                                </a>,
+                            @endforeach
+                        </div>
+                    </td>
+                </tr>
+                @endif
                 <tr>
                     <td>Краткое описание</td>
                     <td>

@@ -12,10 +12,14 @@
                 @yield('appointment.content')
             </div>
             <div class="col-9">
-                @yield('appointment.calendar')
+                @yield('appointment.form')
             </div>
         </div>
     </div>
 </section>
 
+
+
 @endsection
+
+

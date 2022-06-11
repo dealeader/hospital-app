@@ -18,10 +18,16 @@
                             </option>
                         @endforeach
                     </select>
+                    @error('parent_id')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Время</label>
                     <x-input type="time" name="date" value="{{ old('date') }}" />
+                    @error('date')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Категория</label>
@@ -33,11 +39,16 @@
                             </option>
                         @endforeach
                     </select>
+                    @error('category_id')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
-                    <label >Статус</label>
-                    <x-input class="form-control" type="radio" name="isFree" id="isFree" />
-                    <label for="isFree">Занято</label>
+                    <span class="form-control" >Статус</span>
+                    <label><x-input class="form-control" type="radio" name="isFree" id="isFree" />Занято</label>
+                    @error('isFree')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <x-button>Добавить запись</x-button>

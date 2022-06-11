@@ -13,7 +13,7 @@ class Category extends Model
 
     public function getRouteKeyName()
     {
-        return 'name';    
+        return 'name';
     }
 
     public function childs()
@@ -24,10 +24,5 @@ class Category extends Model
     public function days()
     {
         return $this->hasMany(Day::class);
-    }
-
-    public function doctor()
-    {
-        return $this->belongsTo(User::class);
     }
 }

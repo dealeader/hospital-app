@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginStoreRequest;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -11,9 +12,9 @@ class LoginController extends Controller
         return view('login.index');
     }
 
-    public function store(Request $request)
+    public function store(LoginStoreRequest $request)
     {
-        $credentials = $request->only(['document', 'password']);
+        $credentials = $request->validated();
         if (auth("web")->attempt($credentials)) {
             return redirect(route('home'));
         };

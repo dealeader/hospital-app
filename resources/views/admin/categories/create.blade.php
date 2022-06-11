@@ -10,21 +10,31 @@
             <x-form action="{{ route('admin.categories.store') }}" method="POST">
                 <x-form-item>
                     <label>Заголовок поста</label>
-                    <x-input name="name" placeholder="Введите название категории" />
+
+                    <x-input name="name" placeholder="Введите название категории" value="{{ old('name') }}" />
+                    @error('name')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Содержание поста</label>
-                    <x-input name="content" placeholder="Введите краткое описание" />
+                    <x-input name="content" placeholder="Введите краткое описание" value="{{ old('content') }}" />
+                    @error('content')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <label>Вложить в:</label>
                     <select class="form-control" name="parent_id" id="parent_id">
-                        <option value="{{ null }}" {{ null == old('parent') ? ' selected' : '' }}>Не вкладывать</option>
+                        <option value="{{ null }}" {{ null == old('parent_id') ? ' selected' : '' }}>Не вкладывать</option>
                         @foreach($parentCategories as $parent)
                             <option value="{{ $parent->id }}"
                                 {{ $parent->id == old('parent_id') ? ' selected' : '' }}> {{ $parent->name }}</option>
                         @endforeach
                     </select>
+                    @error('parent_id')
+                    <div class="alert alert-danger mt-3">{{ $message }}</div>
+                    @enderror
                 </x-form-item>
                 <x-form-item>
                     <x-button>Создать категорию</x-button>
